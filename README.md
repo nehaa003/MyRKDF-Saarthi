@@ -1,5 +1,42 @@
 # 🎓 MyRKDF Saarthi
 
+
+<div align="center">
+
+<!-- GitHub Stats Badges -->
+<a href="https://github.com/nehaa003/MyRKDF-Saarthi/stargazers">
+  <img src="https://img.shields.io/github/stars/nehaa003/MyRKDF-Saarthi?style=social" />
+</a>
+
+<a href="https://github.com/nehaa003/MyRKDF-Saarthi/network/members">
+  <img src="https://img.shields.io/github/forks/nehaa003/MyRKDF-Saarthi?style=social" />
+</a>
+
+<a href="https://github.com/nehaa003/MyRKDF-Saarthi/watchers">
+  <img src="https://img.shields.io/github/watchers/nehaa003/MyRKDF-Saarthi?style=social" />
+</a>
+
+<br/><br/>
+
+<!-- Tech Stack Badges -->
+<img src="https://img.shields.io/badge/Stack-MERN-brightgreen" />
+<img src="https://img.shields.io/badge/Frontend-React-blue" />
+<img src="https://img.shields.io/badge/Backend-Node.js-green" />
+<img src="https://img.shields.io/badge/Database-MongoDB-darkgreen" />
+<img src="https://img.shields.io/badge/UI-TailwindCSS-06B6D4" />
+<img src="https://img.shields.io/badge/AI-Chatbot-purple" />
+
+<br/><br/>
+
+<!-- Deployment & License Badges -->
+<img src="https://img.shields.io/badge/Deployment-Not%20Live-red" />
+<a href="LICENSE">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+</a>
+
+</div>
+
+ 
 **MyRKDF Saarthi** is an AI-powered college chatbot designed to assist students of **RKDF University** by providing instant, accurate, and reliable academic and campus-related information.
 
 It acts as a smart digital guide for students, helping them with queries related to admissions, courses, fees, departments, and general college information through a modern and user-friendly chat interface.
@@ -109,4 +146,10 @@ GitHub: neha003
 ⭐ Support
 
 If you like this project, please consider giving it a ⭐ on GitHub!
+
+##License
+MIT License
+
+Copyright (c) 2026 Neha Singh
+This project is licensed under the [MIT License](LICENSE).
 

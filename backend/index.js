@@ -10,11 +10,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4002;
 
-app.use(cors({
-  origin: "http://localhost:5173",
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://myrkdf-saarthi.vercel.app"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  })
+);
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,11 +30,20 @@ app.get("/", (req, res) => {
 });
 
 app.use("/bot/v1", chatboatRoutes);
-app.use("/auth", authRoutes); // ✅ NEW
+app.use("/auth", authRoutes); 
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Backend is healthy" });
+});
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("connected to MONGODB"))
-  .catch((err) => console.log("MongoDB connection failed", err.message));
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection failed:", err.message);
+    process.exit(1);
+  });
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);

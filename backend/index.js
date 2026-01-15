@@ -14,9 +14,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://myrkdf-saarthi.vercel.app"
+      "https://my-rkdf-saarthi.vercel.app"
     ],
-    methods: ["GET", "POST"],
+    
     credentials: true
   })
 );

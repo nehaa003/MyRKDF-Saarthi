@@ -8,3 +8,4 @@ cat > fronted/vercel.json <<EOF
   ]
 }
 EOF
+// redeploy trigger

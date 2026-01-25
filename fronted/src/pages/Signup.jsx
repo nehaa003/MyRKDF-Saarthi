@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api"; // ✅ IMPORTANT
 
 const galaxyBg = {
   backgroundImage: `
@@ -21,17 +21,13 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 🔒 Validation
     if (!form.name || !form.email || !form.password) {
       alert("Please fill all fields");
       return;
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:4002/auth/signup",
-        form
-      );
+      const res = await api.post("/auth/signup", form);
 
       if (res.data.success) {
         alert("Signup successful");
@@ -43,40 +39,41 @@ export default function Signup() {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center text-white"
-      style={galaxyBg}
-    >
+    <div className="min-h-screen flex items-center justify-center text-white" style={galaxyBg}>
       <form
         onSubmit={handleSubmit}
-        className="bg-black/40 backdrop-blur-xl p-8 rounded-2xl w-96 space-y-4 border border-white/10 shadow-[0_0_40px_rgba(168,85,247,0.3)]"
+        className="bg-black/40 backdrop-blur-xl p-8 rounded-2xl w-96 space-y-4
+        border border-white/10 shadow-[0_0_40px_rgba(168,85,247,0.3)]"
       >
-        <h2 className="text-3xl font-extrabold text-center bg-gradient-to-r from-red-400 via-yellow-400 to-orange-500 text-transparent bg-clip-text">
+        <h2 className="text-3xl font-extrabold text-center
+          bg-gradient-to-r from-red-400 via-yellow-400 to-orange-500
+          text-transparent bg-clip-text">
           Create Account
         </h2>
 
         <input
           placeholder="Name"
-          className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none"
+          className="w-full p-3 rounded-lg bg-white/10 border border-white/20"
           onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
 
         <input
           placeholder="Email"
-          className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none"
+          className="w-full p-3 rounded-lg bg-white/10 border border-white/20"
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
 
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none"
+          className="w-full p-3 rounded-lg bg-white/10 border border-white/20"
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
 
         <button
           type="submit"
-          className="w-full py-3 rounded-full font-semibold text-black bg-gradient-to-r from-yellow-400 to-orange-500 shadow-lg"
+          className="w-full py-3 rounded-full font-semibold text-black
+          bg-gradient-to-r from-yellow-400 to-orange-500 shadow-lg"
         >
           Sign Up
         </button>

@@ -86,9 +86,9 @@ export const chatMessage = async (req, res) => {
     const text = message.toLowerCase().trim();
     const words = text.split(" ");
 
-    // 👋 1️⃣ GREETING HANDLER
+    // 👋 1️⃣ GREETING HANDLER (IMPROVED)
     const greetings = ["hi", "hello", "hey", "hii", "hlo"];
-    if (greetings.includes(words[0])) {
+    if (words.some(w => greetings.includes(w))) {
       const reply =
         "Welcome to MyRKDF Saarthi 🤖! I’m here to help you with admissions, courses, fees, results, and other RKDF University-related queries.";
 
@@ -101,11 +101,20 @@ export const chatMessage = async (req, res) => {
       });
     }
 
-    // 🔍 2️⃣ DB SEARCH
-    const data = await Knowledge.findOne({
-      isActive: true,
-      keywords: { $in: words }
-    }).sort({ updatedAt: -1 });
+    // 🔥 2️⃣ DB WARM-UP (VERY IMPORTANT – NEW)
+    await Knowledge.findOne({}, { _id: 1 });
+
+    // 🔍 3️⃣ DB SEARCH (SAFE)
+    let data;
+    try {
+      data = await Knowledge.findOne({
+        isActive: true,
+        keywords: { $in: words }
+      }).sort({ updatedAt: -1 });
+    } catch (dbErr) {
+      console.error("DB delay:", dbErr.message);
+      data = null;
+    }
 
     // ✅ Found in DB
     if (data) {
@@ -119,7 +128,7 @@ export const chatMessage = async (req, res) => {
       });
     }
 
-    // 🌐 3️⃣ WEBSITE FALLBACK
+    // 🌐 4️⃣ WEBSITE FALLBACK
     const fallbackReply =
       "This information is not available in my database yet. Please check the official RKDF University website.";
 
@@ -134,9 +143,12 @@ export const chatMessage = async (req, res) => {
 
   } catch (err) {
     console.error("CHATBOT ERROR:", err.message);
-    return res.status(500).json({
-      success: false,
-      error: "Server error"
+
+    // ❌ NEVER SEND 500 TO USER (CHANGED)
+    return res.json({
+      success: true,
+      source: "bot",
+      reply: "🤖 I’m getting ready… please send your message again."
     });
   }
 };

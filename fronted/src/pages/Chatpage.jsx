@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Chat from "../components/Chat";
 
 export default function Chatpage() {
   const navigate = useNavigate();
@@ -9,11 +10,11 @@ export default function Chatpage() {
     if (!token) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>
-      {/* 👇 tumhara existing chat UI yahin rahega */}
+      <Chat /> {/* Your chat component */}
     </div>
   );
 }

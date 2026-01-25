@@ -1,3 +1,11 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Chatpage from "./pages/Chatpage";
+import Admin from "./pages/Admin";
+
 function App() {
   return (
     <Routes>
@@ -10,4 +18,4 @@ function App() {
   );
 }
 
-export default App;  // 🔑 THIS MUST EXIST
+export default App;

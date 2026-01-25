@@ -1,10 +1,3 @@
-import { Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Chatpage from "./pages/Chatpage";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import Admin from "./pages/Admin";
-
 function App() {
   return (
     <Routes>
@@ -17,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;  // 🔑 THIS MUST EXIST

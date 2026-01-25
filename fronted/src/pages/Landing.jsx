@@ -103,7 +103,7 @@ export default function Landing() {
         </div>
 
         <p className="text-sm text-gray-400 mt-8">
-          © {new Date().getFullYear()} MyRKDF Saarthi · RKDF University
+          © {new Date().getFullYear()} MyRKDF Saarthi made with ❤ by Neha Singh
         </p>
       </div>
     </div>
